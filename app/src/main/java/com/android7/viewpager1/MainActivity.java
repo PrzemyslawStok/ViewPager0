@@ -12,8 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BlankFragment2.OnFragmentInteractionListener {
+
+    @Override
+    public void onButtonOkClicked(int no) {
+        Toast.makeText(this,"asdfsdfs",Toast.LENGTH_SHORT).show();
+    }
 
     class fragmentAdapter extends FragmentStatePagerAdapter{
 
@@ -23,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int i) {
-            return new BlankFragment();
+
+            if(i>2)
+                return new BlankFragment();
+            else
+                return BlankFragment2.newInstance("Pierwszy napis","Kolejny napis");
         }
 
         @Override
