@@ -30,10 +30,25 @@ public class MainActivity extends AppCompatActivity implements BlankFragment2.On
         @Override
         public Fragment getItem(int i) {
 
-            if(i>2)
+            Fragment0 fragment0 = new Fragment0();
+            fragment0.setListener(new Fragment0.OnFragment0Listener() {
+                @Override
+                public void onButton0Clicked() {
+                    Toast.makeText(MainActivity.this,"Button0 clicked",Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void wyswietlTekst(String tekst) {
+                    Toast.makeText(MainActivity.this,tekst,Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            return fragment0;
+
+            /*if(i>2)
                 return new BlankFragment();
             else
-                return BlankFragment2.newInstance("Pierwszy napis","Kolejny napis");
+                return BlankFragment2.newInstance("Pierwszy napis","Kolejny napis");*/
         }
 
         @Override
@@ -51,7 +66,10 @@ public class MainActivity extends AppCompatActivity implements BlankFragment2.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
+
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
